@@ -1,0 +1,13 @@
+[package]
+name = "msgbox"
+version = "0.1.0"
+authors = ["ipid <ipid@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+winapi = { version = "0.3.8", features = ["winuser", "windef", "winnt"] }
+
+[profile.release]
+lto = true
