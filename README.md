@@ -1,4 +1,4 @@
-# How to call Windows API 
+# How to call Windows API from Rust
 
 #### A simple example on calling MessageBoxW
 
@@ -8,7 +8,7 @@ What you need to do is:
 
 - There is a crate called `winapi`, which includes nearly all Windows API declarations inside. Add `winapi` to your `Cargo.toml`.
 
-- Look up documentation of `winapi` carefully, and find all **features** that your target API requires to use. For example, to use MessageBoxW, I need to turn on these features: `["winuser", "windef", "winnt"]`. Write these things into your `Cargo.toml`.
+- Look up documentation of `winapi` carefully, and find all **features** that your target API requires to use. For example, to use MessageBoxW, I need to turn on these features: `["winuser", "windef"]`. Write these things into your `Cargo.toml`.
 
 - Import required functions into your scope.
 
@@ -20,6 +20,8 @@ use winapi::{
     }
 };
 ```
+
+- Here you may notice that the so-called **features** are actually the third part of the whole module path.
 
 - You will need a `win_str` helper function to convert Rust `&str` to Windows *Unicode*(actually UTF-16 LE) string. **NOTICE:** There is also a function named `once` in the `winapi` crate. You don't want to mix up with these things.
 
